@@ -9,6 +9,7 @@ __mail__ = "zhangmeng.lee@foxmail.com"
         子命令 config - 确认并打印api-key
         子命令 current - 获得某地的天气信息
         将环境变量作为默认值
+        api-key值验证
     # 运行逻辑
         >>> current --> if 'api-key file' exists then run --> get result
                 |                                         |
@@ -23,11 +24,25 @@ __mail__ = "zhangmeng.lee@foxmail.com"
 """
 
 import os
+import re
 import click
 import requests
 
+# the default file for saving the API-KEY
 API_FILE = os.path.expanduser('~/.weather.cfg')
 
+# validate the api-key
+class ApiKey(click.ParamType):
+    name = 'api-key'
+    def convert(self, value, params, ctx): #api-key, Click.option or Click.argument, context of the command
+        found = re.match('[0-91-f]',value)
+        if not found:
+            self.fail(
+                f'{value} is not a 32-bit hexadecimal string',
+                params,
+                ctx,
+            )
+        return value
 
 # Fahrenheit to Celsius
 def fah2cel(temp):
@@ -58,6 +73,7 @@ def main():
 @click.option(
     '--api-key',
     '-a',
+    type=ApiKey(),
     envvar="API_KEY", # if Env has the api_key, then get it.If not, ask for user.
     help="Your API KEY for OpenWeatherMap"
 )
