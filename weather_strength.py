@@ -119,6 +119,8 @@ def current(location):
     except:
         raise ValueError("Invalid API_KEY.\n Please set a new key Use 'config' command.")
 
+if __name__ == "__main__":
+    main()
 # test
 # python weather_strength.py current Beijing
 # python weather_strength.py config
