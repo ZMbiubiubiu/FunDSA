@@ -3,17 +3,21 @@
 
 """
 定义一个tag函数, 用来生成HTML标签
-涉及到的函数参数的知识
+---涉及到的函数参数的知识---
 1.*和**用来打包输入参数
 2.如何定义一个仅限关键字的参数
 解答
 1.content在函数内部是一个列表, attrs在函数内部是一个字典
 2.此参数前要有*, 比如这个函数的cls, 如果不适用默认None, 自己定义的话,就得 cls = '..' 如此定义
+---关于functools中partial函数
+接受一个可调用对象, 冻结部分参数, 灵活使用其他参数
 """
 
 __author__ = 'ZzLee'
 __email__ = 'zhangmeng.lee@foxmail.com'
 
+
+from functools import partial
 
 def tag(name, *content, cls=None, **attrs):
     """
@@ -41,9 +45,11 @@ def tag(name, *content, cls=None, **attrs):
             name = name,
             attributions = attrs_str,
         )
+tag_img = partial(tag, 'img', cls='picture')
 
 if __name__ == "__main__":
     print(tag('p'))
     print(tag('p', cls='hidebar', head ='top')) # head关键字参数不要写成'head'
     print(tag('p', 'hi', 'girl', cls = 'fam'))
+    print(tag_img(size='666'))
     
