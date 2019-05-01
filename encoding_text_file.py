@@ -11,6 +11,11 @@
                 解码 decode,就是从人类不可见的字节序列转换成Unicode字符
                 比如, b'Montr\xe9al'.decode('cp1252') = 'Montréal'
                       'café'.encode('utf-8') = b'caf\xc3\xa9'
+    4. 关于默认值编码的最好建议, 就是不要依赖默认值编码
+       默认编解码文件内容的设置, locale.getpreferredencoding()
+       默认编解码文件名的设置,   sys.getfilesystemencoding()
+       ps: 查看stdin/stdout/stderr的设置, sys.stdin/sys.stdout/sys.stderr
+        
 现在来说明'三明治原则'
     上片: 读入文件时, 将字节序列尽早的解码成字符串
     中间的'肉片': 业务的逻辑就是用来处理字符串
