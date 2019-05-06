@@ -63,8 +63,8 @@
   * 之前写的一些[文件批处理程序](https://github.com/ZMbiubiubiu/python_files_prosessing_scripts)
   * 模仿 [ls](/Tool/ls.py) 命令  
 
-  * 模仿 [ls](/Tool/more.py) 命令  
-  
+  * 模仿 [more](/Tool/more.py) 命令  
+
   * 统计文本内容信息。[初始版](/Tool/stat_word_information.py) [加强版](/Tool/stat_word_enhanced.py)
 
 
