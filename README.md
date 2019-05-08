@@ -65,6 +65,8 @@
 
   * 模仿 [more](/Tool/more.py) 命令  
 
+  * 模仿 [head](/Tool/head.py) 命令,可选择打印出前n行,n值由你确定
+
   * 统计文本内容信息。[初始版](/Tool/stat_word_information.py) [加强版](/Tool/stat_word_enhanced.py)
 
 

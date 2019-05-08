@@ -4,7 +4,7 @@
 __author__ = "ZzLee"
 __date__ = "2019/04/27"
 __mail__ = "zhangmeng.lee@foxmail.com"
-__version__ "1.0"
+__version__ = "1.0"
 
 
 import os
