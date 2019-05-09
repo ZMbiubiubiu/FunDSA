@@ -74,6 +74,8 @@
 
   * 统计文本内容信息。[初始版](/Tool/stat_word_information.py) [加强版](/Tool/stat_word_enhanced.py)
 
+  * 解析iTunes播放列表.[命令行版](/Tool/playlist/playlist.py) 代码重构,层次更加清晰,且使用click命令行库
+
 
   * 制造一个查看天气的命令行工具。[初始版](/Tool/weather.py) [加强版](/Tool/weather_strength.py)
 
