@@ -31,6 +31,11 @@
   python 的进阶之路，学习资料来自《Fluent Python》、python 标准库等
 ### 特殊方法（Dunder method）
   体现 python 的一致性  
+  [特殊方法__missing__](/Python-Knowledge/)  
+    所有的映射类型在处理找不到键时,都会调用__missing__方法.
+    * 基类dict并没有定义这个方法,但是dict是知道有这么个东西
+    * 继承自dict的类,如果提供了__missing__方法,那么在__getitem__找不到键时,会调用它;如果没有提供__misssing__,则会直接抛出KeyError异常
+    * 提供__missing__方法对get或者__contains__(in运算符会用到这个)没有影响
   [一个较小的例子](/Python-Knowledge/class_method_full_learn.py):使用多个特殊方法构建向量类  
   [序列实现的特殊方法](/Python-Knowledge/sequence_dunder_method.py)
 ### 迭代器&生成器
