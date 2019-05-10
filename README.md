@@ -22,10 +22,20 @@
   [用双链表实现栈](/DataStructure/stack_use_by_doubly_list.py)
 
 # Part2. 基础算法  
-  这一部分的学习资料来自邓俊辉老师课程、著名的《Algorithm》、简书、掘金等
+  这一部分的学习资料来自邓俊辉老师课程、著名的《Algorithm》、简书、掘金等  
+
+### 理解递归  
+  关于递归这个概念,需要掌握三点:  
+  * 明确递归函数的作用,并且相信它能够达成目的
+  * 寻找到递归基,也就是结束的条件,不然会无限递归
+  * 找到递归函数的等价关系式.比如f(n) = n*f(n-1)
+  示例:[单链表的翻转](/Algorithm/reverse_list.py)  
 ### 冒泡排序  
   [实现特点](/Algorithm/bubble_sort.py) ：若中途已经有序，则不必继续‘冒泡’
-### 归并排序
+### 归并排序  
+  [代码](/Algorithm/merge_sort.py) : 先递归划分数组,然后向上合并
+### 二分查找
+  [代码](/Algorithm/binary_search.py) : 将加法改成减法,防止溢出
 
 # Part3. python 知识点
   python 的进阶之路，学习资料来自《Fluent Python》、python 标准库等
