@@ -82,7 +82,9 @@
 
   * 模仿 [head](/Tool/head.py) 命令,可选择打印出前n行,n值由你确定
 
-  * 统计文本内容信息。[初始版](/Tool/stat_word_information.py) [加强版](/Tool/stat_word_enhanced.py)
+  * 统计文本内容信息。[初始版](/Tool/stat_word_information.py) [加强版](/Tool/stat_word_enhanced.py)  
+
+  * 输入一个路径,打印出路径下所有的文件,且递归搜索子目录[代码](/Tool/print_directory_content.py)  
 
   * 解析iTunes播放列表.[命令行版](/Tool/playlist/playlist.py) 代码重构,层次更加清晰,且使用click命令行库
 
