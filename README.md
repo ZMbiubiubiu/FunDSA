@@ -54,6 +54,8 @@
 ### 归并排序  
   [代码实现 merge_sort.py](/Algorithm/merge_sort.py) : 先递归划分数组,然后向上合并  
   [原地修改实现 merge_sort_inplace.py](/Algorithm/merge_sort_inplace.py) : 需要有一个同等大小的辅助数组  
+### 快速排序
+  [代码实现 quick_sort.py](/Algorithm/quick_sort.py) : 重点是切分函数的实现
 
 ### 二分查找
   [代码](/Algorithm/binary_search.py) : 将加法改成减法,防止溢出
