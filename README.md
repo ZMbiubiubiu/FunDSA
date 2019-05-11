@@ -52,7 +52,9 @@
 ### 冒泡排序  
   [实现特点 bubble_sort.py](/Algorithm/bubble_sort.py) ：若中途已经有序，则不必继续‘冒泡’
 ### 归并排序  
-  [代码](/Algorithm/merge_sort.py) : 先递归划分数组,然后向上合并
+  [代码实现 merge_sort.py](/Algorithm/merge_sort.py) : 先递归划分数组,然后向上合并  
+  [原地修改实现 merge_sort_inplace.py](/Algorithm/merge_sort_inplace.py) : 需要有一个同等大小的辅助数组  
+
 ### 二分查找
   [代码](/Algorithm/binary_search.py) : 将加法改成减法,防止溢出
 
