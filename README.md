@@ -29,7 +29,7 @@
   * 明确递归函数的作用,并且相信它能够达成目的
   * 寻找到递归基,也就是结束的条件,不然会无限递归
   * 找到递归函数的等价关系式.比如f(n) = n*f(n-1)  
-  
+
   示例:[单链表的翻转](/Algorithm/reverse_list.py)  
 ### 选择排序  
   #### 原理
@@ -38,7 +38,17 @@
   * 元素的移动次数最少,而且固定.根据算法的描述,不难看出,会移动N次,即元素的个数  
   * 运行时间与输入无关.为了找到最小元素扫描一遍数组并不能为下一次扫描提供什么信息.  
 
-  [代码实现 select_sort.py](/Algorithm/select_sort.py) 
+[代码实现 select_sort.py](/Algorithm/select_sort.py) 
+
+
+### 插入排序  
+  #### 原理
+  就是你打牌时,整理牌用的算法.
+
+[代码实现 insert_sort.py](/Algorithm/select_sort.py) 
+
+
+
 ### 冒泡排序  
   [实现特点 bubble_sort.py](/Algorithm/bubble_sort.py) ：若中途已经有序，则不必继续‘冒泡’
 ### 归并排序  
