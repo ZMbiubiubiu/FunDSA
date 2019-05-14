@@ -38,24 +38,25 @@
   * 元素的移动次数最少,而且固定.根据算法的描述,不难看出,会移动N次,即元素的个数  
   * 运行时间与输入无关.为了找到最小元素扫描一遍数组并不能为下一次扫描提供什么信息.  
 
-[代码实现 select_sort.py](/Algorithm/select_sort.py) 
+[Python实现](/Algorithm/select_sort.py) 
 
 
 ### 插入排序  
   #### 原理
   就是你打牌时,整理牌用的算法.
 
-[代码实现 insert_sort.py](/Algorithm/select_sort.py) 
+[Python实现](/Algorithm/select_sort.py)    
+[C++实现](/Algorithm/select_sort.cpp) 
 
 
 
 ### 冒泡排序  
-  [实现特点 bubble_sort.py](/Algorithm/bubble_sort.py) ：若中途已经有序，则不必继续‘冒泡’
+  [Python实现](/Algorithm/bubble_sort.py) ：若中途已经有序，则不必继续‘冒泡’
 ### 归并排序  
-  [代码实现 merge_sort.py](/Algorithm/merge_sort.py) : 先递归划分数组,然后向上合并  
-  [原地修改实现 merge_sort_inplace.py](/Algorithm/merge_sort_inplace.py) : 需要有一个同等大小的辅助数组  
+  [Python实现](/Algorithm/merge_sort.py) : 先递归划分数组,然后向上合并  
+  [原地修改实现](/Algorithm/merge_sort_inplace.py) : 需要有一个同等大小的辅助数组  
 ### 快速排序
-  [代码实现 quick_sort.py](/Algorithm/quick_sort.py) : 重点是切分函数的实现
+  [Python实现](/Algorithm/quick_sort.py) : 重点是切分函数的实现
 
 ### 二分查找
   [代码](/Algorithm/binary_search.py) : 将加法改成减法,防止溢出
