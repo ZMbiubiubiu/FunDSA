@@ -23,7 +23,7 @@ void insert_sort2(int arr[], int length) {
     for (i=1; i<length; i++) {
         int tmp = arr[i];
         for (j=i; j>0 && arr[j-1]>tmp; j--) {
-            arr[j] = arr[j-1];
+            arr[j] = arr[j-1]; // 将元素向后移动一位
         }
         arr[j] = tmp;
     }
