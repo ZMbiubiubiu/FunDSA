@@ -1,6 +1,6 @@
 `Python` `Algorithm` `CLI` `Computer fundamentals`
 
-在接下来的日子里，我每天会至少用 python 编写一个程序，记录学习的重点:blush:。  
+在接下来的日子里，我每天会至少用 python/C++ 编写一个程序，记录学习的重点:blush:。  
 内容包括
 * 数据结构
 * 基础算法
@@ -39,38 +39,44 @@
   * 运行时间与输入无关.为了找到最小元素扫描一遍数组并不能为下一次扫描提供什么信息.  
 
 [Python实现](/Algorithm/select_sort.py) 
+[C++实现](/Algorithm/select_sort.cpp)  
 
 
 ### 插入排序  
   #### 原理
   就是你打牌时,整理牌用的算法.
 
-[Python实现](/Algorithm/select_sort.py)    
-[C++实现](/Algorithm/select_sort.cpp) 
-
-
+  [Python实现](/Algorithm/select_sort.py)    
+  [C++实现](/Algorithm/select_sort.cpp) 
 
 ### 冒泡排序  
   [Python实现](/Algorithm/bubble_sort.py) ：若中途已经有序，则不必继续‘冒泡’  
   [C++实现](/Algorithm/bubble_sort.cpp)  
-
-  
+ 
 
 ### 归并排序  
   [Python实现](/Algorithm/merge_sort.py) : 先递归划分数组,然后向上合并  
-  [原地修改实现](/Algorithm/merge_sort_inplace.py) : 需要有一个同等大小的辅助数组  
+  [原地修改实现](/Algorithm/merge_sort_inplace.py) : 需要有一个同等大小的辅助数组 
+  [C++实现]() 
 
 ### 快速排序
-  [Python实现](/Algorithm/quick_sort.py) : 重点是切分函数的实现  
+  [Python实现](/Algorithm/quick_sort.py) : 重点是切分函数的实现 
+  [C++实现](/Algorithm/quick_sort.cpp)   
+
+### 堆排序
+  目前还没有学习到这种算法.写在这里,只是为了完整.提示自己需要学习一下此排序.  
+
+### 桶排序
+  [C++实现]()  
 
 ### 计数排序
   [C++实现](/Algorithm/count_sort.cpp)  
 
 ### 基数排序  
-  [C++实现](/Algorithm/radix_sort.cpp)
+  [C++实现](/Algorithm/radix_sort.cpp)  
 
 ### 二分查找
-  [代码](/Algorithm/binary_search.py) : 将加法改成减法,防止溢出
+  [代码](/Algorithm/binary_search.py) : 将加法改成减法,防止溢出  
 
 # Part3. python 知识点
   python 的进阶之路，学习资料来自《Fluent Python》、python 标准库等
