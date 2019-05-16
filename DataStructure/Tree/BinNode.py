@@ -31,13 +31,26 @@ class BinNode:
         """
         self.rc = BinNode(data=data, parent=self)
         return self.rc
+    @staticmethod
+    def isRChild(node):
+        parent = node.parent
+        return parent.rc == node
 
     def succ(self):
         """
-            取当前节点的直接后继
+            取当前节点的直接后继, 中序遍历意义下
         """
-        pass
+        next = self # 记录直接后继的临时变量
+        if self.rc: # 如果当前节点存在右子树,则一定在右子树中
+            next = self.rc
+            while next.lc:
+                next = next.lc
+        else: # 否则,直接后继应该是'将当前节点包含于其左子树中的最低祖先' 
+            while self.isRChild(next):
+                next = next.parent
+            next = next.parent 
 
+        return next
     # 遍历器
     def travLevel(self, func):
         """子树层次遍历"""
@@ -155,3 +168,6 @@ if __name__ == "__main__":
     # 层次遍历
     print("层次遍历")
     a.travLevel(print)
+    # 直接后继
+    print('a的后继',a.succ().data)
+    print('e的后继',e.succ().data)
