@@ -19,7 +19,11 @@
 ### 队列  
   [用双链表实现队列](/DataStructure/queue_use_by_doubly_list.py)
 ### 栈  
-  [用双链表实现栈](/DataStructure/stack_use_by_doubly_list.py)
+  [用双链表实现栈](/DataStructure/stack_use_by_doubly_list.py)  
+
+### 二叉树  
+  Python: [二叉树节点类](/DataStructure/Tree/BinNode.py) [二叉树类](/DataStructure/Tree/BinTree.py)  
+  C++:(目前未实现)[二叉树节点类]() [二叉树类]()
 
 # Part2. 基础算法  
   这一部分的学习资料来自邓俊辉老师课程、著名的《Algorithm》、简书、掘金等  
@@ -30,7 +34,9 @@
   * 寻找到递归基,也就是结束的条件,不然会无限递归
   * 找到递归函数的等价关系式.比如f(n) = n*f(n-1)  
 
-  示例:[单链表的翻转](/Algorithm/reverse_list.py)  
+  示例:  
+  单链表的翻转 [Python实现](/Algorithm/reverse_list.py)[C++迭代+递归实现](/Algorithm/reverse_list.cpp)  
+  反转二叉树 [C++递归](/Algorithm/)  
 ### 选择排序  
   #### 原理
   首先找到数组中最小的元素,其次将它与第一个元素交换.然后在剩下的元素中找到最小的元素,与第二个元素交换.循环往复  
@@ -57,7 +63,7 @@
 ### 归并排序  
   [Python实现](/Algorithm/merge_sort.py) : 先递归划分数组,然后向上合并  
   [原地修改实现](/Algorithm/merge_sort_inplace.py) : 需要有一个同等大小的辅助数组 
-  [C++实现]() 
+  [C++实现](/Algorithm/merge_sort.cpp)   
 
 ### 快速排序
   [Python实现](/Algorithm/quick_sort.py) : 重点是切分函数的实现 
@@ -126,6 +132,8 @@
   * 模仿 [cut](/Tool/cut.py) 命令,提供-f/-d/-c 选项 
 
   * 统计文本内容信息。[初始版](/Tool/stat_word_information.py) [加强版](/Tool/stat_word_enhanced.py)  
+
+  * 在当前目录下的递归子目录,将其中的文件提取到该目录下 [初始版:有待提升](/Tool/recursive_move_file.py)  
 
   * 输入一个路径,打印出路径下所有的文件,且递归搜索子目录[代码](/Tool/print_directory_content.py)  
 
