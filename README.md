@@ -38,18 +38,21 @@
   单链表的翻转 [Python实现](/Algorithm/reverse_list.py)[C++迭代+递归实现](/Algorithm/reverse_list.cpp)  
   反转二叉树 [C++递归](/Algorithm/)  
 ### 选择排序  
-  #### 原理
-  首先找到数组中最小的元素,其次将它与第一个元素交换.然后在剩下的元素中找到最小的元素,与第二个元素交换.循环往复  
+  #### 原理  
+
+首先找到数组中最小的元素,其次将它与第一个元素交换.然后在剩下的元素中找到最小的元素,与第二个元素交换.循环往复  
   #### 特点  
-  * 元素的移动次数最少,而且固定.根据算法的描述,不难看出,会移动N次,即元素的个数  
-  * 运行时间与输入无关.为了找到最小元素扫描一遍数组并不能为下一次扫描提供什么信息.  
+
+* 元素的移动次数最少,而且固定.根据算法的描述,不难看出,会移动N次,即元素的个数  
+* 运行时间与输入无关.为了找到最小元素扫描一遍数组并不能为下一次扫描提供什么信息.  
 
 [Python实现](/Algorithm/select_sort.py) 
 [C++实现](/Algorithm/select_sort.cpp)  
 
 
 ### 插入排序  
-  #### 原理
+  #### 原理  
+
   就是你打牌时,整理牌用的算法.
 
   [Python实现](/Algorithm/select_sort.py)    
@@ -62,7 +65,7 @@
 
 ### 归并排序  
   [Python实现](/Algorithm/merge_sort.py) : 先递归划分数组,然后向上合并  
-  [原地修改实现](/Algorithm/merge_sort_inplace.py) : 需要有一个同等大小的辅助数组 
+  [Python原地修改实现](/Algorithm/merge_sort_inplace.py) : 需要有一个同等大小的辅助数组 
   [C++实现](/Algorithm/merge_sort.cpp)   
 
 ### 快速排序
