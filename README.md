@@ -70,22 +70,27 @@
   [C++实现](/Algorithm/quick_sort.cpp)   
 
 ### 堆排序
-  目前还没有学习到这种算法.写在这里,只是为了完整.提示自己需要学习一下此排序.  
+目前还没有学习到这种算法.写在这里,只是为了完整.提示自己需要学习一下此排序.  
 
-### 桶排序
-  [C++实现]()  
+### 桶排序  
+一个实现:排序0-99之间的整数,建造10个桶,根据num/10作为进入哪个桶的依据.如此一来每只桶装的数分别为0~9,10~19,...,90~99.然后每个桶用自己实现的快速排序进行排序.  
+[C++实现](/Algorithm/buck_sort.cpp)    
 
 ### 计数排序
   [C++实现](/Algorithm/count_sort.cpp)  
 
 ### 基数排序  
-  [C++实现](/Algorithm/radix_sort.cpp)  
 
-### 二分查找
-  [代码](/Algorithm/binary_search.py) : 将加法改成减法,防止溢出  
+[C++实现](/Algorithm/radix_sort.cpp)  
+
+### 二分查找  
+
+[代码](/Algorithm/binary_search.py) : 将加法改成减法,防止溢出  
 
 # Part3. python 知识点
-  python 的进阶之路，学习资料来自《Fluent Python》、python 标准库等
+  python 的进阶之路，学习资料来自《Fluent Python》、python 标准库等  
+### 最新的笔记已经转到[知乎专栏](https://zhuanlan.zhihu.com/c_1111662131090558976)  
+
 ### 特殊方法（Dunder method）
   体现 python 的一致性  
   [特殊方法__missing__](/Python-Knowledge/)  
