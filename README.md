@@ -11,31 +11,1012 @@
 ### 链表
   * 单链表  
       * [初始版](/DataStructure/SinglyLinkedList.py)：实现链表的多个接口，增删改消➕反转  
-      * [加强版](/DataStructure/SinglyLinkedList_strengthen.py)：增加头哨兵，减少麻烦的·头·判断
+      ```python3
+      class ListNode:
+    """
+    a node in Linked list
+    """
+    def __init__(self, data=None, next=None):
+        self.data = data
+        self.next = next
+    def __repr__(self):
+        return repr(self.data)
+    
+class SinglyLinkedList:
+    """
+    create a singly linked-list
+    """
+    def __init__(self):
+        self.head = None
+    def __repr__(self):
+        """
+        return a string representation of the list
+        takes O(n)
+        """
+        nodes = []
+        cur = self.head
+        while cur:
+            nodes.append(repr(cur))
+            cur = cur.next
+        return '[' + ','.join(nodes) + ']'
+    
+    def prepend(self, data):
+        """
+        insert a node at the begining of the list
+        """
+        self.head = ListNode(data=data, next=self.head)
+    def append(self, data):
+        """
+        inset a node at the end of the list
+        """
+        if not self.head:
+            self.head = ListNode(data=data)
+        cur = self.head
+        while cur.next:
+            cur = cur.next
+        cur.next = ListNode(data=data)
+    
+    def find(self, key):
+        """
+        search for the fisrt node with 'data' matching the 'key'
+        return the node or None if not found
+        takes O(n) time
+        """
+        cur = self.head
+        while cur and cur.data != key:
+            cur = cur.next
+        return cur #note that it will be None if not found
+    def remove(self, key):
+        """
+        search for the first node with 'data' matching the 'key'
+        remove the node 
+        Note: this approch has a bug! When list is empty
+        takes o(n) time
+        """
+        cur = self.head
+        pre = None
+        while cur and cur.data != key:
+            pre = cur
+            cur = cur.next
+
+        # if self.head.data == key
+        if not pre:
+            self.head = cur.next
+        else:
+            pre.next = cur.next
+    
+    def reverse(self):
+        """
+        reverse a list
+        takes O(n) time
+        """
+        cur = self.head
+        next_node = None
+        pre_node = None
+        while cur:
+            # for save
+            next_node = cur.next
+            # rebuild a link
+            cur.next = pre_node
+            # just forward
+            pre_node = cur
+            cur = next_node
+        # notice the return
+        self.head = pre_node
+            
+      ```
+      * [加强版](/DataStructure/SinglyLinkedList_strengthen.py)：增加头哨兵，减少麻烦的`头`判断
+      ```pyton3
+      #! /home/bingo/anaconda3/bin/python
+# *- coding:utf-8 -*
+
+__author__ = "ZzLee"
+__date__ = "2019/04/26"
+__mail__ = "zhangmeng.lee@foxmail.com"
+"""
+    A enhanced Singly linked list
+"""
+
+class ListNode:
+    """
+    a node in Linked list
+    """
+    def __init__(self, data=None, next=None):
+        self.data = data
+        self.next = next
+    def __repr__(self):
+        return repr(self.data)
+    
+class SinglyLinkedList:
+    """
+    Create a singly linked-list
+    With 'begin' sentinal!
+    """
+    def __init__(self):
+        self.head = None
+        self.begin = ListNode(data='begin', next=self.head)
+        # self.end = ListNode(data='end')
+        
+    def __repr__(self):
+        """
+        return a string representation of the list
+        takes O(n)
+        """
+        nodes = []
+        cur = self.head
+        while cur:
+            nodes.append(repr(cur))
+            cur = cur.next
+        return '[' + ','.join(nodes) + ']'
+    
+    def prepend(self, data):
+        """
+        insert a node at the begining of the list
+        """
+        self.head = ListNode(data=data, next=self.head)
+    def append(self, data):
+        """
+        inset a node at the end of the list
+        """
+        cur = self.begin
+        while cur.next:
+            cur = cur.next
+        cur.next = ListNode(data=data)
+    
+    def find(self, key):
+        """
+        search for the fisrt node with 'data' matching the 'key'
+        return the node or None if not found
+        takes O(n) time
+        """
+        cur = self.head
+        while cur and cur.data != key:
+            cur = cur.next
+        return cur #note that it will be None if not found
+    def remove(self, key):
+        """
+        search for the first node with 'data' matching the 'key'
+        remove the node 
+        takes o(n) time
+        """
+        cur = self.begin
+        pre = None
+        while cur and cur.data != key:
+            pre = cur
+            cur = cur.next
+        else:
+            pre.next = cur.next
+        
+    def reverse(self):
+        """
+        reverse a list
+        takes O(n) time
+        """
+        cur = self.head
+        next_node = None
+        pre_node = None
+        while cur:
+            # for save
+            next_node = cur.next
+            cur.next = pre_node
+            pre_node = cur
+            cur = next_node
+        self.head = pre_node
+            
+            
+      ```
   * 双链表  
       * [初始版](/DataStructure/DoublyLinkedList.py):  实现双链表的多个接口
+      ```python3
+      #! /home/bingo/anaconda3/bin/python
+# *- coding:utf-8 -*
+
+__author__ = "ZzLee"
+__date__ = "2019/04/26"
+__mail__ = "zhangmeng.lee@foxmail.com"
+"""
+    A simple Doubly linked list
+"""
+
+class ListNode:
+    """
+    a double linked listnode
+    """
+    def __init__(self, data=None, pre=None, next=None):
+        self.data = data
+        self.pre = pre
+        self.next = next
+    def __repr__(self):
+        return repr(self.data)
+    
+class DoublyLinkedList:
+    """
+    Create a doubly linked-list
+    """
+    def __init__(self):
+        self.head = None
+    def __repr__(self):
+        """
+        Return a string representation of the list
+        """
+        nodes = []
+        cur = self.head
+        while cur:
+            nodes.append(repr(cur))
+            cur = cur.next
+        return '[' + ','.join(nodes) + ']'
+    
+    def prepend(self, data):
+        """
+        Insert a node at the begin of the list
+        Takes O(1) time
+        """
+        new_head = ListNode(data=data, next=self.head)
+        if self.head:
+            self.head.pre = new_head
+        self.head = new_head
+    
+    def append(self, data):
+        """
+        Insert a node at the end of the list
+        Takes O(n) time
+        """
+        if not self.head:
+            self.prepend(data)
+        cur = self.head
+        while cur.next:
+            cur = cur.next
+        new_tail = ListNode(data=data, pre=cur)
+        cur.next = new_tail
+        
+    def find(self, key):
+        """
+        Search for the first node with 'data' matching 'key'
+        Return the node or None if not found
+        Takes O(n) time
+        """
+        cur = self.head
+        while cur and cur.data != key:
+            cur = cur.next
+        return cur # Will be None if not found
+    
+    def remove_node(self, node:ListNode):
+        """
+        Unlink an node from the list.
+        Takes O(1) time.
+        """
+        if node.pre:
+            node.pre.next = node.next
+        if node.next:
+            node.next.pre = node.pre
+        if node is self.head:
+            self.head = node.next
+        node.prev = None
+        node.next = None
+        
+    def remove(self, key):
+        """
+        Remove the first occurrence of `key` in the list.
+        Takes O(n) time.
+        """
+        node = self.find(key)
+        if not node:
+            return
+        self.remove_node(node)
+
+    def reverse(self):
+        """
+        Reverse the list in-place.
+        Takes O(n) time.
+        """
+        cur = self.head
+        pre_node = None
+        while cur:
+            # for save
+            pre_node = cur.pre
+            # exchange the pointer
+            cur.pre = cur.next
+            cur.next = pre_node
+            # forward
+            cur = cur.pre
+        self.head = pre_node.pre
+      ```
       * [加强版](/DataStructure/DoublyLinkedList_strength.py): 增加头尾哨兵, 并在节点类的基础上添加插入方法
+      ```python3
+      #! /home/bingo/anaconda3/bin/python
+# *- coding=utf-8 -*
+
+__author__ = "ZzLee"
+__date__ = "2019/04/27"
+__mail__ = "zhangmeng.lee@foxmail.com"
+__version__ = "1.0"
+
+"""
+    参照清华大学邓俊辉老师的<数据结构>, 用python实现
+    ps: 会不断补充此结构
+"""
+# 双向链表加强版之链表节点
+class ListNode:
+    """
+    双向链表的节点
+    data: 节点值
+    prev: 前驱节点
+    succ: 后继杰点
+    """
+    def __init__(self, data, prev=None, succ=None):
+        self.data = data
+        self.prev = prev
+        self.succ = succ
+    def insertAsPrev(self, e):
+        # 创建新节点, 并且设置链接
+        new_node = ListNode(data=e, prev=self.prev, succ=self)
+        self.prev.succ = new_node
+        self.prev = new_node
+        # 返回新节点
+        return new_node
+    def insertAsSucc(self, e):
+        new_node = ListNode(data=e, prev=self, succ=self.succ)
+        self.succ.prev = new_node
+        self.succ = new_node
+        
+    def __repr__(self):
+        """
+        Use a string to representation the listnode itself
+        """
+        return repr(self.data)
+
+# 双向链表加强版之链表
+class List:
+    def __init__(self):
+        # 记录规模
+        self._size = 0
+        # 创建头尾哨兵
+        self.header = ListNode(data = "header")
+        self.trailer = ListNode(data = "trialer")
+        self.header.succ = self.trailer
+        self.trailer.prev = self.header
+        
+    def __repr__(self):
+        """
+        Use a string to representation this list itself
+        O(n)
+        """
+        nodes = []
+        node = self.header.succ
+        while node.data != self.trailer.data:
+            nodes.append(repr(node))
+            node = node.succ
+        return '[' + ','.join(nodes) + ']'
+        
+        
+    """ 
+    只读访问接口
+    """
+    def size(self) ->int:
+        """
+        返回规模
+        O(1)
+        """
+        return self._size
+    def empty(self) ->bool:
+        """
+        判空
+        O(1)
+        """
+        return self._size <= 0
+    def first(self) ->ListNode:
+        """
+        返回首节点
+        O(1)
+        """
+        return self.header.succ
+    def last(self) ->ListNode:
+        """
+        返回末节点
+        O(1)
+        """
+        return self.trailer.prev
+    def __getitem__(self, n:int) ->ListNode:
+        """
+        类似C++的重载运算符'[]'
+        O(n)
+        """
+        node = self.first()
+        while n:
+            node = node.succ
+            n -= 1
+        return node
+ 
+    def insertAsFirst(self, e) ->ListNode:
+        """
+        插入作为首节点 insertAsFirst(self, e:ListNode) ->ListNode
+        O(1)
+        """
+        self._size += 1
+        return self.header.insertAsSucc(e)
+    def insertAsLast(self, e) ->ListNode:
+        """
+        插入作为尾节点 insertAsLast(self, e:ListNode) ->ListNode
+        O(1)
+        """
+        self._size += 1
+        return self.trailer.insertAsPrev(e)
+    def insertA(self, node:ListNode, e) ->ListNode:
+        """
+        在node节点之后插入一个节点 insertA(self, node:ListNode, e) ->ListNode
+        O(1)
+        """
+        self._size += 1
+        return node.insertAsSucc(e)
+    def insertB(self, node:ListNode, e) ->ListNode:
+        """
+        在node节点之前插入一个节点 insertB(self, node:ListNode, e) ->ListNode
+        O(1)
+        """
+        self._size += 1
+        return node.insertAsPrev(e)
+    
+    def find(self, e, n=None, node=None) ->ListNode:
+        """
+        在无序链表中节点node的n个真前驱, 找到等于data=e的最后者
+        O(n)
+        """
+        # 设置默认值
+        if n == None:
+            n = self._size
+        if node == None:
+            node = self.trailer
+        # 设置迭代
+        cur = node.prev
+        while n:
+            if cur.data == e:
+                return cur
+            n -= 1
+            cur = cur.prev
+        return None
+    
+    """ 写操作 """
+    def remove(self, node:ListNode) :
+        """
+        删除合法节点 remove(self, node:ListNode)
+        """
+        data = node.data
+        node.prev.succ = node.succ
+        node.succ.prev = node.prev
+        # 断掉指向
+        node.prev = None
+        node.succ = None
+        # 更新规模
+        self._size -= 1
+        return data
+    def clear(self) ->int:
+        """
+        清除所有的节点, 返回原有的节点数目
+        takes O(n)
+        """
+        old_size = self._size
+        # 反复删除首节点
+        while self._size:
+            remove(header.succ)
+            self._size -= 1
+        return old_size
+    
+    def deduplicate(self) ->int:
+        """
+        删除链表内部的重复节点, 进行唯一化. 返回删除的节点数
+        takes O(n^2) time : 首先需要做n次迭代, 每次迭代中
+          有会调用find方法, find操作的时间复杂度正比于查找区间的宽度,即当前节点的秩
+        """
+        if self._size < 2:
+            return 0
+        
+        old_size = self._size
+        # 设置迭代节点
+        cur = self.header.succ
+        # 真前驱数
+        r = 0
+        # 设置迭代结束的哨兵
+        sentinal = self.trailer.data
+        while cur.data != sentinal:
+            found = self.find(cur.data, r, cur) # 在当前节点的真前驱中寻找相同节点
+            if found:
+                self.remove(found)
+            else:
+                r += 1
+            cur = cur.succ
+        return old_size - self._size
+
+    if __name__ == "__main__":
+        l = List()
+        l.insertAsFirst(2)
+        l.insertAsLast(3)
+        l.insertA(l.first(), 33)
+        l.insertAsFirst(2)
+        l.insertAsFirst(55)
+        l.insertAsFirst(55)
+        l.insertAsFirst(55)
+        print(l)
+        l.deduplicate()
+        print(l)
+    ```
 ### 队列  
   [用双链表实现队列](/DataStructure/queue_use_by_doubly_list.py)
+  ```python3
+  #! /home/bingo/anaconda3/bin/python
+# *- coding=utf-8 -*
+
+__author__ = "ZzLee"
+__date__ = "2019/05/01"
+__mail__ = "zhangmeng.lee@foxmail.com"
+__version__ = "1.0"
+
+"""
+    用双向链表实现queue
+"""
+
+class ListNode:
+    def __init__(self, data, prev=None, succ=None):
+        self.data = data
+        self.prev = prev
+        self.succ = succ
+    
+    def __repr__(self):
+        return repr(self.data)
+    
+    def insertAsPrev(self, e:'data'):
+        node = ListNode(data=e, prev=self.prev, succ=self)
+        self.prev.succ = node
+        self.prev = node
+    def insertAsSucc(self, e:'data'):
+        node = ListNode(data=e, prev=self, succ=self.succ)
+        self.succ.prev = node
+        self.succ = node
+
+# 用双向链表实现队列
+class Queue:
+    def __init__(self):
+        # 规模
+        self._size = 0
+        # 创建头尾哨兵节点
+        self.header = ListNode(data='header')
+        self.trailer = ListNode(data='trailer')
+        self.header.succ = self.trailer
+        self.trailer.prev = self.header
+    def __repr__(self):
+        """
+        用字符串展示队列, 打印队列中个节点的值
+        """
+        nodes = []
+        node = self.header.succ
+        sentinal = self.trailer.data
+        while node.data != sentinal:
+            nodes.append(repr(node.data))
+            node = node.succ
+        return '[' + ','.join(nodes) + ']'
+
+    def size(self):
+        """
+        输出规模
+        """
+        return self._size
+    
+    def empty(self):
+        """
+        判空
+        """
+        return self.size() <= 0
+    
+    def insertAsLast(self, e:'data'):
+        """
+        """
+        self.trailer.insertAsPrev(e)
+    
+    def enque(self, e:'data'):
+        """
+        入队
+        """
+        self._size += 1
+        self.insertAsLast(e)
+
+    def deque(self):
+        """
+        出队
+        """
+        if self.empty():
+            raise LookupError("can't deque from empty queue")
+        self._size -= 1
+        node = self.header.succ
+        self.header.succ = node.succ
+        node.succ.prev = self.header
+        node.prev = None
+        node.succ = None
+        return node
+        
+
+    if __name__ == "__main__":
+        q = Queue()
+        q.enque(2)
+        q.enque(3)
+        q.enque(4)
+        q.enque(5)
+        q.enque(6)
+        q.enque(7)
+        print(q)
+        q.deque()
+        q.deque()
+        q.deque()
+        q.deque()
+        print(q.size())
+        print(q)
+
+  ```
 ### 栈  
-  [用双链表实现栈](/DataStructure/stack_use_by_doubly_list.py)  
+  [用双链表实现栈](/DataStructure/stack_use_by_doubly_list.py) 
+  ```python3
+  #! /home/bingo/anaconda3/bin/python
+# *- coding=utf-8 -*
+
+__author__ = "ZzLee"
+__date__ = "2019/05/01"
+__mail__ = "zhangmeng.lee@foxmail.com"
+__version__ = "1.0"
+
+"""
+    用双向链表实现stack
+"""
+
+class ListNode:
+    """
+    双向链表的节点
+    data:节点值
+    prev:前驱节点
+    succ:后继节点
+    """
+    def __init__(self,data, prev=None, succ=None):
+        self.data = data
+        self.prev = prev
+        self.succ = succ
+    
+    def insertAsPrev(self, e:'data'):
+        # 创建新节点, 并且设置链接
+        node = ListNode(data=e, prev=self.prev, succ=self)
+        self.prev.succ = node
+        self.prev = node
+    
+    def insertAsSucc(self, e:'data'):
+        # 创建节点, 并且设置链接
+        node = ListNode(data=e, prev=self, succ=self.succ)
+        self.succ.prev = node
+        self.prev = node
+    def __repr__(self):
+        """
+        用字符串来显示这个节点
+        """
+        return repr(self.data)
+
+
+# 用双线链表实现栈
+class Stack:
+    def __init__(self):
+        self._size = 0
+        # 创建头尾哨兵, 并且链接
+        self.header = ListNode(data='header')
+        self.trailer = ListNode(data='trailer')
+        self.header.succ=self.trailer
+        self.trailer.prev = self.header
+    
+    def __repr__(self):
+        """
+        用字符串的形式展示栈:即列出栈中的所有数据
+        """
+        nodes = []
+        node = self.header.succ
+        sentinal = self.trailer.data
+        while (node.data != sentinal):
+            nodes.append(repr(node.data))
+            node = node.succ
+        return '[' + ','.join(nodes) + ']'
+
+    def size(self):
+        """
+        记录规模
+        """
+        return self._size
+    
+    def empty(self) :
+        """
+        判空
+        """
+        return self._size <= 0
+    
+    def insertAsLast(self, e:'data'):
+        """
+        插入作为尾节点
+        """
+        return self.trailer.insertAsPrev(e)
+    
+
+    
+    def push(self, e:'data'):
+        """
+        入栈
+        """
+        self._size += 1
+        self.insertAsLast(e)
+    
+    def pop(self):
+        """
+        出栈
+        """
+        if self.empty():
+            raise LookupError("can't pop from empty stack")
+        self._size -= 1
+        # 保存尾节点
+        node = self.trailer.prev
+        node.prev.succ = self.trailer
+        self.trailer.prev = node.prev
+        node.prev = None
+        node.succ = None
+        return node
+
+    if __name__ == "__main__":
+        s = Stack()
+        s.push(2)
+        s.push(3)
+        s.push(4)
+        print(s)
+        s.pop()
+        s.pop()
+        print(s)
+
+
+  ```
 
 ### 二叉树  
-  Python: [二叉树节点类](/DataStructure/Tree/BinNode.py) [二叉树类](/DataStructure/Tree/BinTree.py)  
+  Python: [二叉树节点类](/DataStructure/Tree/BinNode.py) 包含三种遍历的递归以及迭代方法
+  ```python3
+  # 二叉树节点类定义
+from collections import deque
+
+RB_RED = 0
+RB_BLACK = 1
+class BinNode:
+    def __init__(self, data=None, parent=None, lc=None, rc=None, height=0, npl=1, color=RB_RED):
+        """初始化"""
+        self.data = data
+        self.parent = parent
+        self.lc = lc
+        self.rc = rc
+        self.height = height  # 高度
+        self.npl = npl        # 左式堆
+        self.color = color    # 红黑树
+
+    def size(self):
+        """统计当前节点后代总数"""
+        pass
+
+    def insertAsLC(self, data):
+        """
+            作为当前节点的左孩子插入新节点
+        """
+        self.lc = BinNode(data, parent=self)
+        return self.lc
+
+    def insertAsRC(self, data):
+        """
+            作为当前节点的右孩子插入新节点
+        """
+        self.rc = BinNode(data=data, parent=self)
+        return self.rc
+    @staticmethod
+    def isRChild(node):
+        parent = node.parent
+        return parent.rc == node
+
+    def succ(self):
+        """
+            取当前节点的直接后继, 中序遍历意义下
+        """
+        next = self # 记录直接后继的临时变量
+        if self.rc: # 如果当前节点存在右子树,则一定在右子树中
+            next = self.rc
+            while next.lc:
+                next = next.lc
+        else: # 否则,直接后继应该是'将当前节点包含于其左子树中的最低祖先' 
+            while self.isRChild(next):
+                next = next.parent
+            next = next.parent 
+
+        return next
+    # 遍历器
+    def travLevel(self, func):
+        """子树层次遍历"""
+        queue = deque() # 辅助队列
+        queue.append(self)
+        while queue:
+            cur = queue.popleft()
+            func(cur.data)
+            if cur.lc: # 如果有左孩子,那么入队
+                queue.append(cur.lc)
+            if cur.rc: # 如果有右孩子,那么入队
+                queue.append(cur.rc)
+    
+    # 先序遍历
+    def travPrev_R(self, node, func):
+        """子树先序遍历,递归版"""
+        if not node:
+            return ;
+        func(node.data)
+        self.travPrev_R(node.lc, func)
+        self.travPrev_R(node.rc, func)
+    def travPrev_I1(self, node, func):
+        """先序遍历,迭代版1"""
+        stack = [] # 辅助栈
+        if node:
+            stack.append(node)
+        while stack: # 当栈不为空时
+            cur = stack.pop()
+            func(cur.data)
+            if cur.rc:   # 右孩子先入后出
+                stack.append(cur.rc)
+            if cur.lc:
+                stack.append(cur.lc)  # 左孩子后入先出
+    
+    @staticmethod
+    def visitAlongLeftBranch(node, func, stack,):
+        """沿左侧通路自顶而下访问沿途节点"""
+        while node:
+            func(node.data)  # 访问当前节点
+            if node.rc:
+                stack.append(node.rc) # 当前节点右子树入栈
+            node = node.lc   # 眼左侧分支深入一层
+    def travPrev_I2(self, node, func):
+        """
+            先序遍历, 迭代版2
+            先沿着左侧通路自顶而下访问沿途节点, 再自底而上依次遍历这些节点的右子树
+            相比迭代版1, 省了所有的lChild的 push pop
+        """
+        stack = [] # 辅助栈,存储节点右子树
+        while 1:
+            self.visitAlongLeftBranch(node, func, stack)
+            if not stack:
+                break # 栈为空,说明遍历完毕,退出
+            node = stack.pop() # 否则弹出栈顶元素
+            
+        
+    # 中序遍历
+    def travIn_R(self, node, func):
+        """子树中序遍历,递归版"""
+        if not node:
+            return ;
+        self.travIn_R(node.lc, func)
+        func(node.data)
+        self.travIn_R(node.rc, func)
+        
+    @staticmethod
+    def goAlongLeftBranch(node, stack):
+        while node:
+            stack.append(node)
+            node = node.lc
+    def travIn_I(self, node, func):
+        """中序遍历,迭代版"""
+        stack = [] # 辅助栈,保存所有左侧链上的所有节点
+        while 1:
+            self.goAlongLeftBranch(node, stack) # 从当前节点出发,逐批入栈
+            if not stack:
+                return ; # 直到所有节点访问完毕
+            cur = stack.pop() # 弹出栈顶节点并访问之
+            func(cur.data)
+            node = cur.rc # 转向右子树
+        
+    def travPost_R(self, node, func):
+        """子树后序遍历,递归版"""
+        if not node:
+            return ;
+        self.travPost_R(node.lc, func)
+        self.travPost_R(node.rc, func)
+        func(node.data)
+    # 比较器
+    def __lt__(self, node):
+        """小于"""
+        return self.data < node.data 
+    def __eq__(self, node):
+        """等于"""
+        return self.data == node.data
+    if __name__ == "__main__":
+
+        a = BinNode(data='a')
+        b = a.insertAsLC(data='b')
+        c = a.insertAsRC(data='c')
+        d = c.insertAsLC(data='d')
+        f = c.insertAsRC(data='f')
+        e = d.insertAsRC(data='e')
+        g = f.insertAsLC(data='g')
+
+        # 先序遍历
+        print("先序遍历")
+        a.travPrev_R(a, print)
+        a.travPrev_I1(a, print)
+        a.travPrev_I2(a, print)
+        # 中序遍历
+        print("后序遍历")
+        a.travIn_R(a, print)
+        a.travIn_I(a, print)
+        # 层次遍历
+        print("层次遍历")
+        a.travLevel(print)
+        # 直接后继
+        print('a的后继',a.succ().data)
+        print('e的后继',e.succ().data)
+
+  ```
+  [二叉树类](/DataStructure/Tree/BinTree.py)  
+  ```python3
+  from BinNode import BinNode
+
+class BinTree:
+    def __init__(self):
+        self._size = 0
+        self._root = None
+    
+    def size(self):
+        """返回二叉树节点个数"""
+        return self._size
+    def empty(self):
+        """判空"""
+        return not self._root
+    def root(self):
+        """树根"""
+        pass
+    def insertAsRoot(self, data):
+        """插入根节点"""
+        pass
+    def insertAsLC(self, node, data):
+        """将e作为node的左孩子(原无)插入"""
+        pass
+    def insertAsRC(self, node, data):
+        """将e作为node的右孩子(原无)插入"""
+        pass
+    def attachAsLC(self, node, tree):
+        """将tree作为node的左子树(原无)插入"""
+        pass
+    def attachAsRC(self, node, tree):
+        """将tree作为node的右子树(原无)插入"""
+        pass
+    
+    # 遍历器
+    def travLevel(self, func):
+        """子树层次遍历"""
+        if self._root:
+            self._root.travLevel(func)
+    def travPrev(self, func):
+        """子树先序遍历"""
+        if self._root:
+            self._root.travPrev(func)
+    def travIn(self, func):
+        """子树中序遍历"""
+        if self._root:
+            self._root.travIn(func)
+    def travPost(self, func):
+        """子树后序遍历"""
+        if self._root:
+            self._root.travPost(func)
+
+    # 比较器(需要自行补充)
+    # 比较的都是树的根节点
+    def __lt__(self, tree):
+        return self._root and tree._root and (self._root < tree._root)
+    def __eq__(self, tree):
+        return self._root and tree._root and (self._root == tree._root)
+        
+
+    
+  ```
   C++:(目前未实现)[二叉树节点类]() [二叉树类]()
 
 # Part2. 基础算法  
   这一部分的学习资料来自邓俊辉老师课程、著名的《Algorithm》、简书、掘金等  
-
-### 理解递归  
-  关于递归这个概念,需要掌握三点:  
-  * 明确递归函数的作用,并且相信它能够达成目的
-  * 寻找到递归基,也就是结束的条件,不然会无限递归
-  * 找到递归函数的等价关系式.比如f(n) = n*f(n-1)  
-
-  示例:  
-  单链表的翻转 [Python实现](/Algorithm/reverse_list.py)[C++迭代+递归实现](/Algorithm/reverse_list.cpp)  
-  反转二叉树 [C++递归](/Algorithm/)  
+  
 ### 选择排序  
   #### 原理  
 
@@ -100,7 +1081,7 @@ int main()
 
   [Python实现](/Algorithm/select_sort.py)    
   [C++实现](/Algorithm/select_sort.cpp) 
-  ```
+  ```c++
   #include <iostream>
 using namespace std;
 
@@ -161,7 +1142,8 @@ int main() {
 
 ### 冒泡排序  
   [Python实现](/Algorithm/bubble_sort.py) ：若中途已经有序，则不必继续‘冒泡’  
-  ```
+  [C++实现](/Algorithm/bubble_sort.cpp)  
+  ```c++
   def swap(arr, i, j):
     """
     交换'集合'中的两个元素
@@ -194,14 +1176,14 @@ if __name__ == "__main__":
     bubble_sort(arr)
     print(arr)
   ```
-  [C++实现](/Algorithm/bubble_sort.cpp)  
+    
  
 
 ### 归并排序  
   [Python实现](/Algorithm/merge_sort.py) : 先递归划分数组,然后向上合并  
   [Python原地修改实现](/Algorithm/merge_sort_inplace.py) : 需要有一个同等大小的辅助数组 
   [C++实现](/Algorithm/merge_sort.cpp)  
-  ```
+  ```c++
   #include <iostream>
 using namespace std;
 
@@ -266,7 +1248,7 @@ int main()
 ### 快速排序
   [Python实现](/Algorithm/quick_sort.py) : 重点是切分函数的实现 
   [C++实现](/Algorithm/quick_sort.cpp)  
-  ```
+  ```c++
   #include <iostream>
 using namespace std;
 
@@ -349,7 +1331,7 @@ int main()
 ### 桶排序  
 一个实现:排序0-99之间的整数,建造10个桶,根据num/10作为进入哪个桶的依据.如此一来每只桶装的数分别为0~9,10~19,...,90~99.然后每个桶用自己实现的快速排序进行排序.  
 [C++实现](/Algorithm/buck_sort.cpp)  
-```
+```c++
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -440,7 +1422,7 @@ int main() {
 
 ### 计数排序
   [C++实现](/Algorithm/count_sort.cpp) 
-  ```
+  ```c++
   #include <iostream>
 using namespace std;
 
@@ -531,7 +1513,7 @@ int main()
 ### 基数排序  
 
 [C++实现](/Algorithm/radix_sort.cpp) 
-```
+```c++
 #include <iostream>
 using namespace std;
 
@@ -612,7 +1594,7 @@ int main()
 ### 二分查找  
 
 [代码](/Algorithm/binary_search.py) : 将加法改成减法,防止溢出  
-```
+```python3
 # binary_search.py
 # Created: 5 9 2019
 
