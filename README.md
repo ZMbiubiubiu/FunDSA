@@ -47,7 +47,7 @@
 
 [Python实现](/Algorithm/select_sort.py) 
 [C++实现](/Algorithm/select_sort.cpp)  
-```
+```c++
 #include <iostream>
 using namespace std;
 
