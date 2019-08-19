@@ -25,7 +25,7 @@ void count_sort(int arr[], int length) {
     }
     int min = minNumber(arr, length);
     int max = maxNumber(arr, length);
-    int len_tmp = max - min + 1;
+    int len_tmp = max - min + 1; // 辅助数组的大小是根据输入数组数值的范围决定的,而不是输入数组的最大值决定.
     int *tmp = new int[len_tmp]; // 辅助数组,用来统计输入数组
     // 初始化辅助数组,全部置为0
     for (int i=0; i<len_tmp; i++) {
@@ -34,13 +34,34 @@ void count_sort(int arr[], int length) {
     // 进行统计
     for (int i=0; i<length; i++) {
         int k = arr[i];
-        tmp[k-min]++; // 辅助数组的大小是根据输入数组数值的范围决定的,而不是输入数组的最大值决定.
+        tmp[k-min]++; // 其实就是辅助数组的索引值对应着数字，辅助数组索引对应的值对应着这个数字有多少个
     }
     // 利用统计信息进行排序
     int index = 0;
     for (int i=0; i<len_tmp; i++) {
         for (int j=1; j<=tmp[i]; j++) {
             arr[index] = i+min;
+            index++;
+        }
+    }
+}
+
+void count_sort2(int arr[], int length) {
+    int min = minNumber(arr, length);
+    int max = maxNumber(arr, length);
+    int len_tmp = max - min + 1;
+    int *tmp = new int[len_tmp];
+    for (int i=0; i<len_tmp; i++) {
+        tmp[i] = 0;
+    }
+    for (int i=0; i<length; i++) {
+        int k = arr[i];
+        tmp[k-min]++;
+    }
+    int index=0;
+    for (int i=0; i<len_tmp; i++) {
+        for (int j=tmp[i]; j>0; j--) {
+            arr[index] = i + min;
             index++;
         }
     }
@@ -58,7 +79,7 @@ int main()
 {
     int arr[20] = {1, 4, 6, 3, 5, 3, 6, 4, 2, 4, 29, 34, 34, 45, 34, 23, 45, 34, 2, 4};
     print(arr, 20);
-    count_sort(arr, 20);
+    count_sort2(arr, 20);
     print(arr, 20);
     return 0;
 }
